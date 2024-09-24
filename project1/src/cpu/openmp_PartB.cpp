@@ -35,9 +35,9 @@ int main(int argc, char** argv)
     auto start_time = std::chrono::high_resolution_clock::now();
 
 #pragma omp parallel for shared(input_jpeg, grayscaleImage)
-    for (int y = 0; y < input_jpeg.height; y++)
+    for (int y = 1; y < input_jpeg.height -1; y++)
     {
-        for (int x = 0; x < input_jpeg.width; x++)
+        for (int x = 1; x < input_jpeg.width -1; x++)
         {
             int r_id = (y * input_jpeg.width + x) * input_jpeg.num_channels;
             int g_id = r_id + 1;
