@@ -3,6 +3,7 @@
 #SBATCH -p Project
 #SBATCH -J Project1-PartA
 #SBATCH --nodes=1
+#SBATCH -w node05
 #SBATCH --ntasks-per-node=32
 #SBATCH --gres=gpu:1
 

@@ -40,35 +40,35 @@ do
   echo ""
 done
 
-# Pthread PartC
-echo "Pthread PartC (Optimized with -O2)"
-for num_cores in 1 2 4 8 16 32
-do
-  echo "Number of cores: $num_cores"
-  srun -n 1 --cpus-per-task $num_cores ${CURRENT_DIR}/../../build/src/cpu/pthread_PartC ${CURRENT_DIR}/../../images/4K-RGB.jpg ${CURRENT_DIR}/../../images/4K-Bilateral.jpg ${num_cores}
-  echo ""
-done
+# # Pthread PartC
+# echo "Pthread PartC (Optimized with -O2)"
+# for num_cores in 1 2 4 8 16 32
+# do
+#   echo "Number of cores: $num_cores"
+#   srun -n 1 --cpus-per-task $num_cores ${CURRENT_DIR}/../../build/src/cpu/pthread_PartC ${CURRENT_DIR}/../../images/4K-RGB.jpg ${CURRENT_DIR}/../../images/4K-Bilateral.jpg ${num_cores}
+#   echo ""
+# done
 
 # OpenMP PartC
-echo "OpenMP PartC (Optimized with -O2)"
-for num_cores in 1 2 4 8 16 32
-do
-  echo "Number of cores: $num_cores"
-  srun -n 1 --cpus-per-task $num_cores ${CURRENT_DIR}/../../build/src/cpu/openmp_PartC ${CURRENT_DIR}/../../images/4K-RGB.jpg ${CURRENT_DIR}/../../images/4K-Bilateral.jpg ${num_cores}
-  echo ""
-done
+# echo "OpenMP PartC (Optimized with -O2)"
+# for num_cores in 1 2 4 8 16 32
+# do
+#   echo "Number of cores: $num_cores"
+#   srun -n 1 --cpus-per-task $num_cores ${CURRENT_DIR}/../../build/src/cpu/openmp_PartC ${CURRENT_DIR}/../../images/4K-RGB.jpg ${CURRENT_DIR}/../../images/4K-Bilateral.jpg ${num_cores}
+#   echo ""
+# done
 
 # CUDA PartC
 echo "CUDA PartC"
 srun -n 1 --gpus 1 ${CURRENT_DIR}/../../build/src/gpu/cuda_PartC ${CURRENT_DIR}/../../images/4K-RGB.jpg ${CURRENT_DIR}/../../images/4K-Bilateral.jpg
 echo ""
 
-# OpenACC PartC
-echo "OpenACC PartC"
-srun -n 1 --gpus 1 ${CURRENT_DIR}/../../build/src/gpu/openacc_PartC ${CURRENT_DIR}/../../images/4K-RGB.jpg ${CURRENT_DIR}/../../images/4K-Bilateral.jpg
-echo ""
+# # OpenACC PartC
+# echo "OpenACC PartC"
+# srun -n 1 --gpus 1 ${CURRENT_DIR}/../../build/src/gpu/openacc_PartC ${CURRENT_DIR}/../../images/4K-RGB.jpg ${CURRENT_DIR}/../../images/4K-Bilateral.jpg
+# echo ""
 
-# Triton PartC
-echo "Triton PartC"
-srun -n 1 --gpus 1 python3 ${CURRENT_DIR}/../gpu/triton_PartC.py ${CURRENT_DIR}/../../images/4K-RGB.jpg ${CURRENT_DIR}/../../images/4K-Bilateral.jpg
-echo ""
+# # Triton PartC
+# echo "Triton PartC"
+# srun -n 1 --gpus 1 python3 ${CURRENT_DIR}/../gpu/triton_PartC.py ${CURRENT_DIR}/../../images/4K-RGB.jpg ${CURRENT_DIR}/../../images/4K-Bilateral.jpg
+# echo ""

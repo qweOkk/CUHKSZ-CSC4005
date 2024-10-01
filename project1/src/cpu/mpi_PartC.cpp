@@ -1,10 +1,3 @@
-//
-// Created by Yang Yufan on 2023/9/16.
-// Email: yufanyang1@link.cuhk.edu.cn
-//
-// MPI implementation of transforming a JPEG image from RGB to gray
-//
-
 #include <memory.h>
 #include <chrono>
 #include <iostream>
@@ -16,27 +9,28 @@
 #define MASTER 0
 #define TAG_GATHER 0
 
-void set_filtered_image(JpegSOA& input_jpeg,
-                        std::vector<ColorValue>& output_r_values,
-                        std::vector<ColorValue>& output_g_values,
-                        std::vector<ColorValue>& output_b_values,
-                        int width, int num_channels, int start_line,
-                        int end_line)
+// Optimized function to set the filtered image
+void set_filtered_image_optimized(JpegSOA& input_jpeg,
+                                  std::vector<ColorValue>& output_r_values,
+                                  std::vector<ColorValue>& output_g_values,
+                                  std::vector<ColorValue>& output_b_values,
+                                  int width, int num_channels, int start_row,
+                                  int block_height)
 {
-    for (int row = start_line; row < end_line; row++)
-    {
-        for (int col = 1; col < width - 1; col++)
-        {
-            for (int channel = 0; channel < num_channels; ++channel)
-            {
-                int index = row * width + col;
-                ColorValue filtered_value = bilateral_filter(
-                    input_jpeg.get_channel(channel), row, col, width);
+    for (int row = start_row; row < start_row + block_height; row++) {
+        for (int col = 1; col < width - 1; col++) {
+            // Cache index calculation
+            int index = row * width + col;
 
-                if (channel == 0) output_r_values[index] = filtered_value;
-                if (channel == 1) output_g_values[index] = filtered_value;
-                if (channel == 2) output_b_values[index] = filtered_value;
-            }
+            // Cache input channel values into local variables to avoid redundant memory access
+            ColorValue r_value = input_jpeg.r_values[index];
+            ColorValue g_value = input_jpeg.g_values[index];
+            ColorValue b_value = input_jpeg.b_values[index];
+
+            // Process each channel
+            output_r_values[index] = bilateral_filter(input_jpeg.r_values, row, col, width);
+            output_g_values[index] = bilateral_filter(input_jpeg.g_values, row, col, width);
+            output_b_values[index] = bilateral_filter(input_jpeg.b_values, row, col, width);
         }
     }
 }
@@ -59,7 +53,6 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    std::cout << "Input file from: " << input_filepath << "\n";
     int width = input_jpeg.width;
     int height = input_jpeg.height;
     int num_channels = input_jpeg.num_channels;
@@ -82,38 +75,46 @@ int main(int argc, char** argv)
     MPI_Get_processor_name(hostname, &len);
     MPI_Status status;
 
-    int total_line_num = height - 2;
-    int line_per_task = total_line_num / numtasks;
-    int left_line_num = total_line_num % numtasks;
+    int block_height = height / numtasks; 
+    int remainder = height % numtasks; 
 
-    // Calculate the cut-off points for each process
-    std::vector<int> cuts(numtasks + 1, 1);
-    for (int i = 0; i < numtasks; i++)
-    {
-        cuts[i + 1] = cuts[i] + line_per_task + (i < left_line_num ? 1 : 0);
-    }
+    int extra_rows = taskid < remainder ? 1 : 0;
+    int current_block_height = block_height + extra_rows;
+    int start_row = taskid * block_height + std::min(taskid, remainder);
 
     if (taskid == MASTER) 
     {
+        std::cout << "Input file from: " << input_filepath << "\n";
+
         auto start_time = std::chrono::high_resolution_clock::now();
         
         // Master process handles its own slice
-        set_filtered_image(input_jpeg, output_r_values, output_g_values, output_b_values, width, num_channels, cuts[taskid], cuts[taskid + 1]);
+        set_filtered_image_optimized(input_jpeg, output_r_values, output_g_values, output_b_values, width, num_channels, start_row, current_block_height);
 
-        // Allocate space to receive data from other processes
-        for (int i = 1; i < numtasks; i++) 
-        {
-            int start_index = cuts[i] * width;
-            int length = width * (cuts[i + 1] - cuts[i]);
-
-            // Receive filtered data for each channel from other processes
-            MPI_Recv(output_r_values.data() + start_index, length, MPI_UNSIGNED_CHAR, i, TAG_GATHER, MPI_COMM_WORLD, &status);
-            MPI_Recv(output_g_values.data() + start_index, length, MPI_UNSIGNED_CHAR, i, TAG_GATHER, MPI_COMM_WORLD, &status);
-            MPI_Recv(output_b_values.data() + start_index, length, MPI_UNSIGNED_CHAR, i, TAG_GATHER, MPI_COMM_WORLD, &status);
+        // Prepare for receiving data from other processes
+        std::vector<int> sendcounts(numtasks), displs(numtasks);
+        for (int i = 0; i < numtasks; ++i) {
+            int extra = i < remainder ? 1 : 0;
+            sendcounts[i] = (block_height + extra) * width;
+            displs[i] = i * block_height * width + std::min(i, remainder) * width;
         }
 
+        // Non-blocking receives
+        std::vector<MPI_Request> requests(3 * (numtasks - 1));
+        for (int i = 1; i < numtasks; i++) {
+            MPI_Irecv(output_r_values.data() + displs[i], sendcounts[i], MPI_UNSIGNED_CHAR, i, TAG_GATHER, MPI_COMM_WORLD, &requests[3 * (i - 1)]);
+            MPI_Irecv(output_g_values.data() + displs[i], sendcounts[i], MPI_UNSIGNED_CHAR, i, TAG_GATHER, MPI_COMM_WORLD, &requests[3 * (i - 1) + 1]);
+            MPI_Irecv(output_b_values.data() + displs[i], sendcounts[i], MPI_UNSIGNED_CHAR, i, TAG_GATHER, MPI_COMM_WORLD, &requests[3 * (i - 1) + 2]);
+        }
+
+        // Wait for all receives to complete
+        MPI_Waitall(3 * (numtasks - 1), requests.data(), MPI_STATUSES_IGNORE);
+
+        auto end_time = std::chrono::high_resolution_clock::now();        
+        auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
         const char* output_filepath = argv[2];
         std::cout << "Output file to: " << output_filepath << "\n";
+        std::cout << "Execution Time: " << elapsed_time.count() << " milliseconds\n";
 
         // Use output_jpeg object in export_jpeg
         if (export_jpeg(output_jpeg, output_filepath)) 
@@ -122,23 +123,18 @@ int main(int argc, char** argv)
             return -1;
         }
 
-        auto end_time = std::chrono::high_resolution_clock::now();
-        auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
-        std::cout << "Execution Time: " << elapsed_time.count() << " milliseconds\n";
-
     } 
     else 
     {
         // Worker processes handle their own slice
-        int offset = cuts[taskid] * width;
-        int length = width * (cuts[taskid + 1] - cuts[taskid]);
-
-        set_filtered_image(input_jpeg, output_r_values, output_g_values, output_b_values, width, num_channels, cuts[taskid], cuts[taskid + 1]);
+        set_filtered_image_optimized(input_jpeg, output_r_values, output_g_values, output_b_values, width, num_channels, start_row, current_block_height);
 
         // Send filtered data back to master
-        MPI_Send(output_r_values.data() + offset, length, MPI_UNSIGNED_CHAR, MASTER, TAG_GATHER, MPI_COMM_WORLD);
-        MPI_Send(output_g_values.data() + offset, length, MPI_UNSIGNED_CHAR, MASTER, TAG_GATHER, MPI_COMM_WORLD);
-        MPI_Send(output_b_values.data() + offset, length, MPI_UNSIGNED_CHAR, MASTER, TAG_GATHER, MPI_COMM_WORLD);
+        int sendcount = current_block_height * width;
+        MPI_Request request;
+        MPI_Isend(output_r_values.data() + start_row * width, sendcount, MPI_UNSIGNED_CHAR, MASTER, TAG_GATHER, MPI_COMM_WORLD, &request);
+        MPI_Isend(output_g_values.data() + start_row * width, sendcount, MPI_UNSIGNED_CHAR, MASTER, TAG_GATHER, MPI_COMM_WORLD, &request);
+        MPI_Isend(output_b_values.data() + start_row * width, sendcount, MPI_UNSIGNED_CHAR, MASTER, TAG_GATHER, MPI_COMM_WORLD, &request);
     }
 
     MPI_Finalize();

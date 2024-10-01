@@ -1,0 +1,7 @@
+Current directory: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts
+CUDA PartC
+Input file from: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-RGB.jpg
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-Bilateral.jpg
+Transformation Complete!
+Execution Time: 6.48803 milliseconds
+
