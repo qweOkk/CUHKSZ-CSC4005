@@ -86,46 +86,63 @@ int main(int argc, char** argv)
     int width = input_jpeg.width;
     int height = input_jpeg.height;
     int num_channels = input_jpeg.num_channels;
-    ColorValue* output_r_values = new ColorValue[width * height];
-    ColorValue* output_g_values = new ColorValue[width * height];
-    ColorValue* output_b_values = new ColorValue[width * height];
-    JpegSOA output_jpeg{
-        output_r_values, output_g_values, output_b_values,       width,
-        height,          num_channels,    input_jpeg.color_space};
+    int buffer_size=width * height;
+    ColorValue* output_r_values = new ColorValue[buffer_size];
+    ColorValue* output_g_values = new ColorValue[buffer_size];
+    ColorValue* output_b_values = new ColorValue[buffer_size];
+    ColorValue* input_r_values = new ColorValue[buffer_size];
+    ColorValue* input_g_values = new ColorValue[buffer_size];
+    ColorValue* input_b_values = new ColorValue[buffer_size];
+    memset(output_r_values,0,buffer_size);
+    memset(output_g_values,0,buffer_size);
+    memset(output_b_values,0,buffer_size);
+    memcpy(input_r_values, input_jpeg.r_values, buffer_size);
+    memcpy(input_g_values, input_jpeg.g_values, buffer_size);
+    memcpy(input_b_values, input_jpeg.b_values, buffer_size);
     // Apply the filter to the image using OpenACC
-    
-#pragma acc data copyin(input_jpeg) create(output_jpeg)
-#pragma acc update device(input_jpeg) 
-#pragma acc parallel present(input_jpeg,output_jpeg) num_gangs(1024)
+#pragma acc enter data copyin(output_r_values[0 : buffer_size], output_g_values[0 : buffer_size], output_b_values[0 : buffer_size], \
+                              input_r_values[0 : buffer_size], input_g_values[0 : buffer_size], input_b_values[0 : buffer_size])
+#pragma acc update device(output_r_values[0 : buffer_size], output_g_values[0 : buffer_size], output_b_values[0 : buffer_size], \
+                              input_r_values[0 : buffer_size], input_g_values[0 : buffer_size], input_b_values[0 : buffer_size])
+
     auto start_time = std::chrono::high_resolution_clock::now();
-        #pragma acc loop independent
+#pragma acc parallel present(output_r_values[0 : buffer_size], output_g_values[0 : buffer_size], output_b_values[0 : buffer_size], \
+                              input_r_values[0 : buffer_size], input_g_values[0 : buffer_size], input_b_values[0 : buffer_size]) num_gangs(1024)
+    {
+#pragma acc loop independent
         for (int row = 1; row < height - 1; ++row)
         {
-            #pragma acc loop independent
+#pragma acc loop independent
             for (int col = 1; col < width - 1; ++col)
             {   
 
                 int index = row * width + col;
-                if (index >= 0 && index < (width-1) * (height-1)){
-                    ColorValue filtered_value_r = bilateral_filter_acc(
-                        input_jpeg.r_values, row, col, width,height);
-                    ColorValue filtered_value_g = bilateral_filter_acc(
-                        input_jpeg.g_values, row, col, width,height);
-                    ColorValue filtered_value_b = bilateral_filter_acc(
-                        input_jpeg.b_values, row, col, width,height);
-                    output_jpeg.r_values[index]=filtered_value_r;
-                    output_jpeg.g_values[index]=filtered_value_g;
-                    output_jpeg.b_values[index]=filtered_value_b;
-                }
+                ColorValue filtered_value_r = bilateral_filter_acc(
+                    input_r_values, row, col, width,height);
+                ColorValue filtered_value_g = bilateral_filter_acc(
+                    input_g_values, row, col, width,height);
+                ColorValue filtered_value_b = bilateral_filter_acc(
+                    input_b_values, row, col, width,height);
+                output_r_values[index]=filtered_value_r;
+                output_g_values[index]=filtered_value_g;
+                output_b_values[index]=filtered_value_b;
                 
             }
         }
+    }
 
 
 
     auto end_time = std::chrono::high_resolution_clock::now();
     auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(
-    end_time - start_time);
+    end_time - start_time);    
+#pragma acc update self(output_r_values[0 : buffer_size],output_g_values[0 : buffer_size],output_b_values[0 : buffer_size])
+
+#pragma acc exit data copyout(output_r_values[0 : buffer_size],output_g_values[0 : buffer_size],output_b_values[0 : buffer_size])
+
+    JpegSOA output_jpeg{
+        output_r_values, output_g_values, output_b_values,       width,
+        height,          num_channels,    input_jpeg.color_space};
     // Save output JPEG image
     const char* output_filepath = argv[2];
     std::cout << "Output file to: " << output_filepath << "\n";
@@ -136,6 +153,9 @@ int main(int argc, char** argv)
     }
 
     // Cleanup
+    delete[] input_r_values;
+    delete[] input_g_values;
+    delete[] input_b_values;    
     delete[] output_r_values;
     delete[] output_g_values;
     delete[] output_b_values;
