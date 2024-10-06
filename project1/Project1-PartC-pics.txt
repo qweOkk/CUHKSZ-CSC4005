@@ -1,0 +1,62 @@
+Sequential PartC Array-of-Structure (Optimized with -O2)
+Input file from: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-RGB.jpg
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-Bilateral_aos.jpg
+Transformation Complete!
+Execution Time: 3726 milliseconds
+
+Sequential PartC Structure-of-Array (Optimized with -O2)
+Input file from: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-RGB.jpg
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-Bilateral_soa.jpg
+Transformation Complete!
+Execution Time: 3650 milliseconds
+
+SIMD(AVX2) PartC (Optimized with -O2)
+Input file from: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-RGB.jpg
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-Bilateral_simd_O0.jpg
+Transformation Complete!
+Execution Time: 3358 milliseconds
+
+SIMD(AVX2) PartC (Optimized with -O2)
+Input file from: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-RGB.jpg
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-Bilateral_simd.jpg
+Transformation Complete!
+Execution Time: 660 milliseconds
+
+MPI PartC (Optimized with -O2)
+Number of processes: 32
+Input file from: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-RGB.jpg
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-Bilateral_mpi.jpg
+Execution Time: 192 milliseconds
+
+Pthread PartC (Optimized with -O2)
+Number of cores: 32
+Input file from: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-RGB.jpg
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-Bilateral_pthread.jpg
+Transformation Complete!
+Execution Time: 203 milliseconds
+
+OpenMP PartC (Optimized with -O2)
+Number of cores: 32
+Input file from: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-RGB.jpg
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-Bilateral_openmp.jpg
+Transformation Complete!
+Execution Time: 291 milliseconds
+
+CUDA PartC
+Input file from: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-RGB.jpg
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-Bilateral_cuda.jpg
+Transformation Complete!
+Execution Time: 6.48416 milliseconds
+
+OpenACC PartC
+Input file from: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-RGB.jpg
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-Bilateral_openacc.jpg
+Transformation Complete!
+Execution Time: 5 milliseconds
+
+Triton PartC
+Input file from: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-RGB.jpg
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project1/src/scripts/../../images/4K-Bilateral_triton.jpg
+Transformation Complete!
+Execution Time: 2.10 milliseconds
+

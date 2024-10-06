@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <mpi.h> // MPI Header
-
+#include <omp.h>
 #include "../utils.hpp"
 
 #define MASTER 0
@@ -17,6 +17,7 @@ void set_filtered_image_optimized(JpegSOA& input_jpeg,
                                   int width, int num_channels, int start_row,
                                   int block_height)
 {
+    #pragma omp parallel for schedule(static) collapse(2)
     for (int row = start_row; row < start_row + block_height; row++) {
         for (int col = 1; col < width - 1; col++) {
             // Cache index calculation

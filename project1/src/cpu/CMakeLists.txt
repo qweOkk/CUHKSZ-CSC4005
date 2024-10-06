@@ -54,11 +54,15 @@ add_executable(simd_PartB
         ../utils.cpp ../utils.hpp)
 target_compile_options(simd_PartB PRIVATE -O2 -mavx2)
 
+add_executable(simd_PartC_O0
+        simd_PartC.cpp
+        ../utils.cpp ../utils.hpp)
+target_compile_options(simd_PartC_O0 PRIVATE -O0 -mavx2)
+
 add_executable(simd_PartC
         simd_PartC.cpp
         ../utils.cpp ../utils.hpp)
-target_compile_options(simd_PartC PRIVATE -O0 -mavx2)
-
+target_compile_options(simd_PartC PRIVATE -O2 -mavx2)
 ## MPI
 add_executable(mpi_PartA
         mpi_PartA.cpp

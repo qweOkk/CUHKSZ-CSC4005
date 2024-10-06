@@ -47,41 +47,44 @@ int main(int argc, char** argv)
     /**
      * TODO: OpenMP PartC
      */
-// #pragma omp parallel for shared(input_jpeg, output_jpeg)
+#pragma omp parallel for schedule(static) collapse(3)
 
-//     for (int row = 1; row < height - 1; ++row)
-//         {
-//             for (int col = 1; col < width - 1; ++col)
-//             {
-//                 for (int channel = 0; channel < num_channels; ++channel){
-//                     int index = row * width + col;
-//                     ColorValue filtered_value = bilateral_filter(
-//                     input_jpeg.get_channel(channel), row, col, width);
-//                     output_jpeg.set_value(channel, index, filtered_value);
-//                 }
-                
-//             }
-//         }
-    #pragma omp parallel
-    {
-
-        int thread_id = omp_get_thread_num();
-        int num_threads = NUM_THREADS;
-
-        for (int row = thread_id + 1; row < height - 1; row += num_threads)
+    for (int row = 1; row < height - 1; ++row)
         {
             for (int col = 1; col < width - 1; ++col)
             {
-                for (int channel = 0; channel < num_channels; ++channel)
-                {
+                for (int channel = 0; channel < num_channels; ++channel){
                     int index = row * width + col;
                     ColorValue filtered_value = bilateral_filter(
-                        input_jpeg.get_channel(channel), row, col, width);
+                    input_jpeg.get_channel(channel), row, col, width);
                     output_jpeg.set_value(channel, index, filtered_value);
                 }
+                
             }
         }
-    }
+    // #pragma omp parallel
+    // {
+
+    //     int thread_id = omp_get_thread_num();
+    //     int num_threads = NUM_THREADS;
+
+    //     for (int row = thread_id + 1; row < height - 1; row += num_threads)
+    //     {
+    //         for (int col = 1; col < width - 1; ++col)
+    //         {
+    //             int index = row * width + col;
+    //             ColorValue filtered_value_r = bilateral_filter(
+    //                 input_jpeg.r_values, row, col, width);
+    //             output_jpeg.set_value(0, index, filtered_value_r);
+    //             ColorValue filtered_value_g = bilateral_filter(
+    //                 input_jpeg.g_values, row, col, width);
+    //             output_jpeg.set_value(1, index, filtered_value_g);
+    //             ColorValue filtered_value_b = bilateral_filter(
+    //                 input_jpeg.b_values, row, col, width);
+    //             output_jpeg.set_value(2, index, filtered_value_b);
+    //         }
+    //     }
+    // }
 
     auto end_time = std::chrono::high_resolution_clock::now();
     const char* output_filepath = argv[2];
