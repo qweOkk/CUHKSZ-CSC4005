@@ -42,3 +42,24 @@
 
 *.Plo
 *.Plo.0.0.0
+project1/images/4K-Bilateral_aos.jpg
+project1/images/4K-Bilateral_cuda.jpg
+project1/images/4K-Bilateral_mpi.jpg
+project1/images/4K-Bilateral_openacc.jpg
+project1/images/4K-Bilateral_openmp.jpg
+project1/images/4K-Bilateral_pthread.jpg
+project1/images/4K-Bilateral_simd_O0.jpg
+project1/images/4K-Bilateral_simd.jpg
+project1/images/4K-Bilateral_soa.jpg
+project1/images/4K-Bilateral_triton.jpg
+project1/images/4K-Bilateral.jpg
+project1/images/1728224108035.png
+project1/images/out/4k-GRAY_cuda.jpg
+project1/images/out/4k-GRAY_mpi.jpg
+project1/images/out/4k-GRAY_openacc.jpg
+project1/images/out/4k-GRAY_openmp.jpg
+project1/images/out/4k-GRAY_pthread.jpg
+project1/images/out/4k-GRAY_simd.jpg
+project1/images/out/4k-GRAY_triton.jpg
+project1/images/out/4k-GRAY.jpg
+project1/images/out/4k-GRAY2.jpg
