@@ -8,7 +8,13 @@
 #include <stdexcept>
 #include <chrono>
 #include "matrix.hpp"
+#include <cstring>
+#include <immintrin.h>
 Matrix matrix_multiply_locality(const Matrix& matrix1, const Matrix& matrix2) {
+    if (matrix1.getCols() != matrix2.getRows()) {
+        throw std::invalid_argument(
+            "Matrix dimensions are not compatible for multiplication.");
+    }
     size_t M = matrix1.getRows(), K = matrix1.getCols(), N = matrix2.getCols();
     Matrix result(M, N);
 
@@ -20,20 +26,18 @@ Matrix matrix_multiply_locality(const Matrix& matrix1, const Matrix& matrix2) {
     }
 
     // Allocate and initialize one-dimensional arrays for m1 and m2
-    std::vector<int> m1(M * K);
-    std::vector<int> m2(K * N);
-    std::vector<int> res(M * N);
+    int* m1 = (int*)_mm_malloc(M * K * sizeof(int), 32); 
+    int* m2 = (int*)_mm_malloc(K * N * sizeof(int), 32);
+    int* res = (int*)_mm_malloc(M * N * sizeof(int), 32);
     for (size_t i = 0; i < M; ++i) {
-        for (size_t j = 0; j < K; ++j) {
-            m1[i * K + j] = matrix1[i][j];
-        }
-    }
-    for (size_t i = 0; i < K; ++i) {
-        for (size_t j = 0; j < N; ++j) {
-            m2[i * N + j] = matrix2[i][j];
-        }
+        std::memcpy(&m1[i * K], &matrix1[i][0], K * sizeof(int));
     }
 
+    // #pragma omp parallel for
+    for (size_t i = 0; i < K; ++i) {
+        std::memcpy(&m2[i * N], &matrix2[i][0], N * sizeof(int));
+    }
+    memset(res, 0, M * N * sizeof(int));
     // Tiled matrix multiplication
     const size_t blockSize = 64; // You can experiment with this value to match your cache size.
     int temp;
@@ -52,12 +56,12 @@ Matrix matrix_multiply_locality(const Matrix& matrix1, const Matrix& matrix2) {
         }
     }
 
-    for(size_t i=0;i<M;i++){
-        for(size_t j=0;j<N;j++){
-            result[i][j]=res[i * N + j];
-        }
+    for (size_t i = 0; i < M; ++i) {
+        std::memcpy(&result[i][0], &res[i * N], N * sizeof(int));
     }
-
+    _mm_free(m1);
+    _mm_free(m2);
+    _mm_free(res);
     return result;
 }
 

@@ -1,5 +1,6 @@
 # Required packages and flags
 ## MPI
+cmake_minimum_required(VERSION 3.10)
 find_package(MPI REQUIRED)
 if (MPI_FOUND)
     message("MPI FOUND, Version: ${MPI_CXX_VERSION}")
@@ -15,7 +16,7 @@ endif ()
 add_executable(naive_sparse
         naive.cpp
         sparse_matrix.cpp sparse_matrix.hpp)
-target_compile_options(naive PRIVATE -O2)
+target_compile_options(naive_sparse PRIVATE -O2)
 
 ## MPI
 add_executable(parallelized_sparse

@@ -1,0 +1,1013 @@
+Naive Matrix Multiplication (Optimized with -O2)
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 8215 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/naive /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+    24,154,349,333      cpu-cycles:u                                                
+           511,252      cache-misses:u                                              
+            10,045      page-faults:u                                               
+
+       8.538082337 seconds time elapsed
+
+       8.370060000 seconds user
+       0.046888000 seconds sys
+
+
+
+Memory Locality Matrix Multiplication (Optimized with -O2)
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 788 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/locality /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     2,802,046,571      cpu-cycles:u                                                
+           546,471      cache-misses:u                                              
+             6,539      page-faults:u                                               
+
+       1.108734070 seconds time elapsed
+
+       0.975608000 seconds user
+       0.030987000 seconds sys
+
+
+
+SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 188 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/simd /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       996,331,133      cpu-cycles:u                                                
+           491,874      cache-misses:u                                              
+             6,539      page-faults:u                                               
+
+       0.501107220 seconds time elapsed
+
+       0.371699000 seconds user
+       0.030727000 seconds sys
+
+
+
+OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)
+Number of cores: 1
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 230 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/openmp 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,104,634,879      cpu-cycles:u                                                
+           503,043      cache-misses:u                                              
+             6,590      page-faults:u                                               
+
+       0.546133509 seconds time elapsed
+
+       0.414278000 seconds user
+       0.032863000 seconds sys
+
+
+
+Number of cores: 2
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 199 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/openmp 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,503,042,947      cpu-cycles:u                                                
+           506,585      cache-misses:u                                              
+             6,595      page-faults:u                                               
+
+       0.514151342 seconds time elapsed
+
+       0.569735000 seconds user
+       0.038710000 seconds sys
+
+
+
+Number of cores: 4
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 113 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/openmp 4 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,504,403,485      cpu-cycles:u                                                
+           695,043      cache-misses:u                                              
+             6,598      page-faults:u                                               
+
+       0.447511872 seconds time elapsed
+
+       0.605222000 seconds user
+       0.047780000 seconds sys
+
+
+
+Number of cores: 8
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 74 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/openmp 8 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,636,849,330      cpu-cycles:u                                                
+           574,654      cache-misses:u                                              
+             6,608      page-faults:u                                               
+
+       0.393522376 seconds time elapsed
+
+       0.690342000 seconds user
+       0.036699000 seconds sys
+
+
+
+Number of cores: 16
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 64 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/openmp 16 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,918,864,093      cpu-cycles:u                                                
+           587,891      cache-misses:u                                              
+             6,625      page-faults:u                                               
+
+       0.386797379 seconds time elapsed
+
+       0.905217000 seconds user
+       0.027216000 seconds sys
+
+
+
+Number of cores: 32
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 51 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/openmp 32 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     2,546,744,486      cpu-cycles:u                                                
+           531,721      cache-misses:u                                              
+             6,661      page-faults:u                                               
+
+       0.388331041 seconds time elapsed
+
+       1.345188000 seconds user
+       0.060963000 seconds sys
+
+
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)
+Number of Processes: 1, Number of Threads: 32
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 50 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 32 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     2,518,364,724      cpu-cycles:u                                                
+           629,440      cache-misses:u                                              
+             9,127      page-faults:u                                               
+
+       0.415581537 seconds time elapsed
+
+       1.310503000 seconds user
+       0.076798000 seconds sys
+
+
+
+Number of Processes: 2, Number of Threads: 16
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 34 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 16 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,793,037,443      cpu-cycles:u                                                
+           540,841      cache-misses:u                                              
+             7,615      page-faults:u                                               
+
+       0.486594352 seconds time elapsed
+
+       0.849633000 seconds user
+       0.040029000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 16 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,185,631,783      cpu-cycles:u                                                
+           424,909      cache-misses:u                                              
+             8,666      page-faults:u                                               
+
+       0.420595662 seconds time elapsed
+
+       0.641504000 seconds user
+       0.063364000 seconds sys
+
+
+
+Number of Processes: 4, Number of Threads: 8
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 35 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 8 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,165,707,818      cpu-cycles:u                                                
+           538,700      cache-misses:u                                              
+             6,829      page-faults:u                                               
+
+       0.414495094 seconds time elapsed
+
+       0.518797000 seconds user
+       0.048886000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 8 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,228,221,977      cpu-cycles:u                                                
+           315,295      cache-misses:u                                              
+             6,829      page-faults:u                                               
+
+       0.584602373 seconds time elapsed
+
+       0.546122000 seconds user
+       0.035746000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 8 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,330,552,661      cpu-cycles:u                                                
+           900,960      cache-misses:u                                              
+             6,827      page-faults:u                                               
+
+       0.411530862 seconds time elapsed
+
+       0.566810000 seconds user
+       0.038054000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 8 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       899,975,375      cpu-cycles:u                                                
+           598,269      cache-misses:u                                              
+             8,522      page-faults:u                                               
+
+       0.418465738 seconds time elapsed
+
+       0.440754000 seconds user
+       0.055217000 seconds sys
+
+
+
+Number of Processes: 8, Number of Threads: 4
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 31 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 4 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,076,526,800      cpu-cycles:u                                                
+           542,789      cache-misses:u                                              
+             6,443      page-faults:u                                               
+
+       0.453726358 seconds time elapsed
+
+       0.427432000 seconds user
+       0.034710000 seconds sys
+
+
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 4 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 4 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,088,918,286      cpu-cycles:u                                                
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 4 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,026,322,536      cpu-cycles:u                                                
+           336,180      cache-misses:u                                              
+     1,063,544,128      cpu-cycles:u                                                
+           474,621      cache-misses:u                                              
+             6,441      page-faults:u                                               
+
+       0.408310835 seconds time elapsed
+
+       0.416059000 seconds user
+       0.042107000 seconds sys
+
+
+
+
+           431,548      cache-misses:u                                              
+             6,441      page-faults:u                                               
+
+       0.413640997 seconds time elapsed
+
+       0.416739000 seconds user
+       0.041574000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 4 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+             6,441      page-faults:u                                               
+
+       0.418732488 seconds time elapsed
+
+       0.423331000 seconds user
+       0.038119000 seconds sys
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 4 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,038,688,041      cpu-cycles:u                                                
+           607,743      cache-misses:u                                              
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 4 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,033,130,198      cpu-cycles:u                                                
+           530,881      cache-misses:u                                              
+             6,443      page-faults:u                                               
+
+       1.022787908 seconds time elapsed
+
+       0.429172000 seconds user
+       0.034172000 seconds sys
+
+
+     1,038,098,216      cpu-cycles:u                                                
+           579,852      cache-misses:u                                              
+             6,443      page-faults:u                                               
+
+       1.008752533 seconds time elapsed
+
+       0.434416000 seconds user
+       0.031173000 seconds sys
+
+
+             6,443      page-faults:u                                               
+
+       1.083324462 seconds time elapsed
+
+       0.427399000 seconds user
+       0.039220000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 4 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       743,810,212      cpu-cycles:u                                                
+           437,156      cache-misses:u                                              
+             8,659      page-faults:u                                               
+
+       0.436824075 seconds time elapsed
+
+       0.340331000 seconds user
+       0.039153000 seconds sys
+
+
+
+Number of Processes: 16, Number of Threads: 2
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 44 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       948,997,943      cpu-cycles:u                                                
+           799,177      cache-misses:u                                              
+             6,261      page-faults:u                                               
+
+       1.025157486 seconds time elapsed
+
+       0.344839000 seconds user
+       0.042980000 seconds sys
+
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       951,953,520      cpu-cycles:u                                                
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       946,763,729      cpu-cycles:u                                                
+       952,063,433      cpu-cycles:u                                                
+           295,582      cache-misses:u                                              
+             6,262      page-faults:u                                               
+
+       0.975241182 seconds time elapsed
+
+       0.347104000 seconds user
+       0.035907000 seconds sys
+
+
+         1,172,422      cache-misses:u                                              
+             6,262      page-faults:u                                               
+
+       1.289951176 seconds time elapsed
+
+       0.357950000 seconds user
+       0.030909000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       951,245,962      cpu-cycles:u                                                
+         1,093,156      cache-misses:u                                              
+             6,261      page-faults:u                                               
+
+       0.913037708 seconds time elapsed
+
+         1,056,990      cache-misses:u                                              
+             6,260      page-faults:u                                               
+
+       1.008153137 seconds time elapsed
+
+       0.345102000 seconds user
+       0.041650000 seconds sys
+
+
+       948,091,947      cpu-cycles:u                                                
+           648,748      cache-misses:u                                              
+             6,262      page-faults:u                                               
+
+       0.958056452 seconds time elapsed
+
+       0.350750000 seconds user
+       0.035974000 seconds sys
+
+
+       0.351379000 seconds user
+       0.036141000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       983,747,929      cpu-cycles:u                                                
+         1,281,849      cache-misses:u                                              
+             6,263      page-faults:u                                               
+
+       0.388171854 seconds time elapsed
+
+       0.350452000 seconds user
+       0.041934000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       970,828,235      cpu-cycles:u                                                
+         1,787,280      cache-misses:u                                              
+             6,263      page-faults:u                                               
+
+       0.459884991 seconds time elapsed
+
+       0.357509000 seconds user
+       0.036949000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       971,182,411      cpu-cycles:u                                                
+         1,716,464      cache-misses:u                                              
+             6,263      page-faults:u                                               
+
+       0.409107387 seconds time elapsed
+
+       0.355198000 seconds user
+       0.038803000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       980,696,479      cpu-cycles:u                                                
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+         1,173,138      cache-misses:u                                              
+             6,261      page-faults:u                                               
+
+       0.390696904 seconds time elapsed
+
+       0.357084000 seconds user
+       0.035008000 seconds sys
+
+
+       960,309,998      cpu-cycles:u                                                
+         1,201,661      cache-misses:u                                              
+             6,263      page-faults:u                                               
+
+       0.408018093 seconds time elapsed
+
+       0.356107000 seconds user
+       0.033914000 seconds sys
+
+
+       975,590,276      cpu-cycles:u                                                
+         1,785,103      cache-misses:u                                              
+             6,265      page-faults:u                                               
+
+       0.489324057 seconds time elapsed
+
+       0.352597000 seconds user
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       971,898,454      cpu-cycles:u                                                
+         1,650,204      cache-misses:u                                              
+             6,263      page-faults:u                                               
+
+       0.398988161 seconds time elapsed
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       986,839,397      cpu-cycles:u                                                
+         1,745,913      cache-misses:u                                              
+             6,260      page-faults:u                                               
+
+       0.393688776 seconds time elapsed
+
+       0.364927000 seconds user
+       0.030076000 seconds sys
+
+
+       0.042708000 seconds sys
+
+
+       0.357664000 seconds user
+       0.035866000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       967,455,658      cpu-cycles:u                                                
+         1,352,140      cache-misses:u                                              
+             6,261      page-faults:u                                               
+
+       0.416270752 seconds time elapsed
+
+       0.358504000 seconds user
+       0.034047000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 2 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+       700,048,401      cpu-cycles:u                                                
+           522,772      cache-misses:u                                              
+             9,386      page-faults:u                                               
+
+       0.410896789 seconds time elapsed
+
+       0.256869000 seconds user
+       0.046993000 seconds sys
+
+
+
+Number of Processes: 32, Number of Threads: 1
+Output file to: /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt
+Multiplication Complete!
+Execution Time: 70 milliseconds
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,544,119,722      cpu-cycles:u                                                
+         1,632,044      cache-misses:u                                              
+             6,175      page-faults:u                                               
+
+       3.516474742 seconds time elapsed
+
+       0.549144000 seconds user
+       0.051731000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,550,339,476      cpu-cycles:u                                                
+         2,082,803      cache-misses:u                                              
+             6,174      page-faults:u                                               
+
+       0.643121065 seconds time elapsed
+
+       0.556236000 seconds user
+
+       0.043939000 seconds sys
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,543,758,691      cpu-cycles:u                                                
+         1,603,771      cache-misses:u                                              
+             6,176      page-faults:u                                               
+
+       2.971246658 seconds time elapsed
+
+       0.559084000 seconds user
+       0.041931000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,542,580,032      cpu-cycles:u                                                
+         1,915,002      cache-misses:u                                              
+             6,175      page-faults:u                                               
+
+       2.383302235 seconds time elapsed
+
+       0.552996000 seconds user
+       0.049819000 seconds sys
+
+
+     1,542,477,395      cpu-cycles:u                                                
+         1,901,434      cache-misses:u                                              
+             6,175      page-faults:u                                               
+
+       1.410322318 seconds time elapsed
+
+       0.557239000 seconds user
+       0.044858000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,545,297,632      cpu-cycles:u                                                
+         1,657,179      cache-misses:u                                              
+             6,175      page-faults:u                                               
+
+       5.252354245 seconds time elapsed
+
+       0.562678000 seconds user
+       0.040903000 seconds sys
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,545,223,703      cpu-cycles:u                                                
+         1,613,931      cache-misses:u                                              
+     1,543,551,020      cpu-cycles:u                                                
+         1,616,649      cache-misses:u                                              
+             6,175      page-faults:u                                               
+
+       3.788628388 seconds time elapsed
+
+       0.554632000 seconds user
+       0.048879000 seconds sys
+
+
+
+
+     1,542,792,789      cpu-cycles:u                                                
+         1,958,128      cache-misses:u                                              
+             6,173      page-faults:u                                               
+
+       3.154504317 seconds time elapsed
+
+       0.557943000 seconds user
+       0.044914000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,543,257,118      cpu-cycles:u                                                
+         1,945,316      cache-misses:u                                              
+             6,175      page-faults:u                                               
+
+       2.369676919 seconds time elapsed
+
+       0.546393000 seconds user
+       0.055835000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,546,782,074      cpu-cycles:u                                                
+         1,885,709      cache-misses:u                                              
+             6,175      page-faults:u                                               
+
+       3.219330207 seconds time elapsed
+
+       0.556765000 seconds user
+       0.045898000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,547,290,807      cpu-cycles:u                                                
+         1,906,962      cache-misses:u                                              
+             6,175      page-faults:u                                               
+
+       6.218299479 seconds time elapsed
+
+       0.556870000 seconds user
+       0.046904000 seconds sys
+
+
+             6,175      page-faults:u                                               
+
+       7.315043977 seconds time elapsed
+
+       0.552826000 seconds user
+       0.051889000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,543,883,343      cpu-cycles:u                                                
+         1,565,784      cache-misses:u                                              
+             6,174      page-faults:u                                               
+
+       3.695741962 seconds time elapsed
+
+       0.549312000 seconds user
+       0.053834000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,506,489,938      cpu-cycles:u                                                
+         1,738,590      cache-misses:u                                              
+             6,175      page-faults:u                                               
+
+       0.642390324 seconds time elapsed
+
+       0.540151000 seconds user
+       0.049013000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,525,811,489      cpu-cycles:u                                                
+         2,095,944      cache-misses:u                                              
+             6,175      page-faults:u                                               
+
+       0.825077659 seconds time elapsed
+
+       0.549209000 seconds user
+       0.045099000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,535,526,346      cpu-cycles:u                                                
+         1,964,124      cache-misses:u                                              
+             6,178      page-faults:u                                               
+
+       0.647865118 seconds time elapsed
+
+       0.556264000 seconds user
+       0.047850000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,534,911,466      cpu-cycles:u                                                
+         2,074,907      cache-misses:u                                              
+             6,177      page-faults:u                                               
+
+       0.735087562 seconds time elapsed
+
+       0.554806000 seconds user
+       0.049803000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,535,785,633      cpu-cycles:u                                                
+         2,075,629      cache-misses:u                                              
+             6,177      page-faults:u                                               
+
+       1.389538628 seconds time elapsed
+
+       0.551890000 seconds user
+       0.053891000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,533,097,072      cpu-cycles:u                                                
+         2,080,366      cache-misses:u                                              
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,532,572,613      cpu-cycles:u                                                
+         2,050,673      cache-misses:u                                              
+             6,177      page-faults:u                                               
+
+       0.683268646 seconds time elapsed
+
+       0.553387000 seconds user
+       0.050669000 seconds sys
+
+
+             6,177      page-faults:u                                               
+
+       0.892123635 seconds time elapsed
+
+       0.557395000 seconds user
+       0.046698000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,535,988,639      cpu-cycles:u                                                
+         2,062,462      cache-misses:u                                              
+             6,177      page-faults:u                                               
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,534,520,966      cpu-cycles:u                                                
+         2,060,820      cache-misses:u                                              
+             6,177      page-faults:u                                               
+
+       0.819309121 seconds time elapsed
+
+       0.551589000 seconds user
+       0.052055000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,534,856,504      cpu-cycles:u                                                
+         1,984,694      cache-misses:u                                              
+             6,173      page-faults:u                                               
+
+       0.740367134 seconds time elapsed
+
+       0.557457000 seconds user
+       0.047953000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,557,477,605      cpu-cycles:u                                                
+         2,084,131      cache-misses:u                                              
+             6,179      page-faults:u                                               
+
+       0.626427928 seconds time elapsed
+
+       0.553294000 seconds user
+       0.051933000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,558,533,632      cpu-cycles:u                                                
+         2,094,746      cache-misses:u                                              
+             6,178      page-faults:u                                               
+
+       0.627201077 seconds time elapsed
+
+       0.554341000 seconds user
+       0.050847000 seconds sys
+
+
+       0.666248365 seconds time elapsed
+
+       0.559161000 seconds user
+       0.045931000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,474,229,097      cpu-cycles:u                                                
+         1,776,716      cache-misses:u                                              
+             6,177      page-faults:u                                               
+
+       0.680800559 seconds time elapsed
+
+       0.528599000 seconds user
+       0.050295000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,546,019,508      cpu-cycles:u                                                
+         2,078,525      cache-misses:u                                              
+             6,176      page-faults:u                                               
+
+       0.633175696 seconds time elapsed
+
+       0.557156000 seconds user
+       0.046844000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,488,989,426      cpu-cycles:u                                                
+         1,920,492      cache-misses:u                                              
+             6,177      page-faults:u                                               
+
+       0.655391274 seconds time elapsed
+
+       0.540515000 seconds user
+       0.047132000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,536,237,819      cpu-cycles:u                                                
+         2,002,942      cache-misses:u                                              
+             6,174      page-faults:u                                               
+
+       0.736702173 seconds time elapsed
+
+       0.557615000 seconds user
+       0.047881000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,535,812,211      cpu-cycles:u                                                
+         2,079,805      cache-misses:u                                              
+             6,177      page-faults:u                                               
+
+       0.626313563 seconds time elapsed
+
+       0.555857000 seconds user
+       0.045069000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,554,638,465      cpu-cycles:u                                                
+         2,058,814      cache-misses:u                                              
+             6,175      page-faults:u                                               
+
+       0.636706612 seconds time elapsed
+
+       0.561860000 seconds user
+       0.042836000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/src/mpi 1 /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix5.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../matrices/matrix6.txt /nfsmnt/122090435/CUHKSZ-CSC4005/project2/src/../build/result.txt':
+
+     1,215,872,929      cpu-cycles:u                                                
+         2,179,390      cache-misses:u                                              
+             9,685      page-faults:u                                               
+
+       0.665079138 seconds time elapsed
+
+       0.442972000 seconds user
+       0.054362000 seconds sys
+
+
+

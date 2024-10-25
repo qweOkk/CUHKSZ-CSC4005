@@ -9,11 +9,13 @@
 #include <stdexcept>
 #include <chrono>
 #include "matrix.hpp"
-
+#include <cstring>
 Matrix matrix_multiply_simd(const Matrix& matrix1, const Matrix& matrix2) {
     size_t M = matrix1.getRows(), K = matrix1.getCols(), N = matrix2.getCols();
     Matrix result(M, N);
-
+    size_t M_align=((M-1)/8)*8+8;
+    size_t N_align=((N-1)/8)*8+8;
+    size_t K_align=((K-1)/8)*8+8;
     // Initialize the result matrix
     for (size_t i = 0; i < M; ++i) {
         for (size_t j = 0; j < N; ++j) {
@@ -22,18 +24,17 @@ Matrix matrix_multiply_simd(const Matrix& matrix1, const Matrix& matrix2) {
     }
 
     // Allocate and initialize one-dimensional arrays for m1 and m2
-    std::vector<int> m1(M * K);
-    std::vector<int> m2(K * N);
-    std::vector<int> res(M * N);
+    int* m1 = (int*)_mm_malloc(M * K_align * sizeof(int), 32); 
+    int* m2 = (int*)_mm_malloc(K * N_align * sizeof(int), 32);
+    int* res = (int*)_mm_malloc(M * N_align * sizeof(int), 32);
+    memset(res, 0, M * N_align * sizeof(int));
+    // Load matrix data into one-dimensional arrays
     for (size_t i = 0; i < M; ++i) {
-        for (size_t j = 0; j < K; ++j) {
-            m1[i * K + j] = matrix1[i][j];
-        }
+        std::memcpy(&m1[i * K_align], &matrix1[i][0], K_align * sizeof(int));
     }
+
     for (size_t i = 0; i < K; ++i) {
-        for (size_t j = 0; j < N; ++j) {
-            m2[i * N + j] = matrix2[i][j];
-        }
+        std::memcpy(&m2[i * N_align], &matrix2[i][0], N_align * sizeof(int));
     }
 
     // Tiled matrix multiplication
@@ -44,29 +45,23 @@ Matrix matrix_multiply_simd(const Matrix& matrix1, const Matrix& matrix2) {
     __m256i res_vals;
     __m256i prod;
     int tmp;
-    size_t aligned_end_j = (N / 8) * 8; 
     for (size_t ii = 0; ii < M; ii += blockSize) {
         for (size_t kk = 0; kk < K; kk += blockSize) {
-            for (size_t jj = 0; jj < N; jj += blockSize) {
+            for (size_t jj = 0; jj < N_align; jj += blockSize) {
                 // Process the current block
                 for (size_t i = ii; i < std::min(ii + blockSize, M); ++i) {
                     for (size_t k = kk; k < std::min(kk + blockSize, K); ++k) {
-                     temp = _mm256_set1_epi32(m1[i * K + k]);  // Broadcast single element of m1
-                    size_t j;
-                    // SIMD loop to handle aligned elements
-                    for ( j = jj; j < std::min(jj + blockSize, aligned_end_j); j += 8) {
-                        m2_vals = _mm256_loadu_si256((__m256i*)&m2[k * N + j]);
-                        res_vals = _mm256_loadu_si256((__m256i*)&res[i * N + j]);
+                        temp = _mm256_set1_epi32(m1[i * K_align + k]);  // Broadcast single element of m1
+                        size_t j;
+                        // SIMD loop to handle aligned elements
+                        for ( j = jj; j < std::min(jj + blockSize, N_align); j += 8) {
+                            m2_vals = _mm256_load_si256((__m256i*)&m2[k * N_align + j]);
+                            res_vals = _mm256_load_si256((__m256i*)&res[i * N_align + j]);
 
-                        prod = _mm256_mullo_epi32(temp, m2_vals);
-                        res_vals = _mm256_add_epi32(res_vals, prod);
+                            prod = _mm256_mullo_epi32(temp, m2_vals);
+                            res_vals = _mm256_add_epi32(res_vals, prod);
 
-                        _mm256_storeu_si256((__m256i*)&res[i * N + j], res_vals);
-                    }
-
-                        tmp=m1[i * K + k];
-                        for (; j <std::min(N,jj+blockSize); ++j) {
-                            res[i * N + j] += tmp * m2[k * N + j];
+                            _mm256_store_si256((__m256i*)&res[i * N_align + j], res_vals);
                         }
                     }
                 }
@@ -86,12 +81,12 @@ Matrix matrix_multiply_simd(const Matrix& matrix1, const Matrix& matrix2) {
     //     }
     // }
 
-    for(size_t i=0;i<M;i++){
-        for(size_t j=0;j<N;j++){
-            result[i][j]=res[i * N + j];
-        }
-    }
-
+    for (size_t i = 0; i < M; ++i) {
+        std::memcpy(&result[i][0], &res[i * N_align], N_align * sizeof(int));
+    }  
+    _mm_free(m1);
+    _mm_free(m2);
+    _mm_free(res);
     return result;
 }
 

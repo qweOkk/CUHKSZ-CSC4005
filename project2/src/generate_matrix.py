@@ -1,11 +1,11 @@
 import random
 
-row_num = 100
-col_num = 100
+row_num = 99
+col_num = 101
 
 maximum_limit = 100.0
 
-with open("matrix.txt", "w") as matrix_file:
+with open("matrix22.txt", "w") as matrix_file:
     matrix_file.write(f"{row_num} {col_num}\n")
     for i in range(row_num):
         for j in range(col_num):

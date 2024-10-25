@@ -34,7 +34,6 @@ target_link_libraries(cuda_PartC cudart)
 
 ## OpenACC
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -acc -ta=tesla:nofma")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -acc -gpu cuda11.4 ")
 add_executable(openacc_PartA
         openacc_PartA.cpp
         ../utils.cpp ../utils.hpp)
