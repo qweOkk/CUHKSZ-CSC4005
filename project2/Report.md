@@ -90,6 +90,8 @@ For 1024*1024 matrices:
 | OpenMP + SIMD + Memory Locality (32 threads) | 48 | 170.42 | 5.325 |
 | MPI + OpenMP + SIMD + Memory Locality (total 32 threads) | 35 | 233.71 | 7.303 |
 | CUDA | 4.394 | 1861.63 | - |
+
+
 For 2048*2048 matrices:
 
 | Methods | Time (ms) | Speedup | Efficiency |
