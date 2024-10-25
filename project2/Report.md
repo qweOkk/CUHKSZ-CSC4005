@@ -102,6 +102,8 @@ For 2048*2048 matrices:
 | OpenMP + SIMD + Memory Locality (32 threads) | 196 | 454.96 | 14.217 |
 | MPI + OpenMP + SIMD + Memory Locality (total 32 threads) | 228 | 391.11 | 12.222 |
 | CUDA | 34.679 | 2,571.38 | - |
+
+
 ![Alt text](image-1.png)
 ## Analysis
 By using locality and simd, the speedup and efficiency both increases significantly. OpenMP and MPI have similar performance, which both achieve high speedup but less efficiency compared wtih SIMD+Locality.  
